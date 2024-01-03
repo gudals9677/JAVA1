@@ -14,6 +14,8 @@ package sub3;
  *  - 싱글톤 객체를 사용해서 메모리 절약과 성능 향상을 기대
  */
 
+import sub4.StockAccount;
+
 class Increment {
 	
 	private int num1;
@@ -66,6 +68,7 @@ public class StaticTest {
 		System.out.println("rs2 : " + rs2);
 		System.out.println("rs3 : " + rs3);
 		System.out.println("rs4 : " + rs4);
+		
 		
 	}
 }
