@@ -8,7 +8,7 @@ public class EncapsuleTest {
 
 	public static void main(String[] args) {
 		
-		Car sonata = new Car("소나타","네이비",100);
+		Car sonata = new Car("소나타","흰색",100);
 		
 		// 캡슐화된 속성에 대한 초기화는 생성자에서 수행
 		//sonata.name  = "K5";
@@ -33,6 +33,7 @@ public class EncapsuleTest {
 		kb.deposit(80000);
 		kb.withdraw(7000);
 		kb.show();
+		
 		
 		
 	

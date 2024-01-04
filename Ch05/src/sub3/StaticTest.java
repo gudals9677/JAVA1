@@ -19,16 +19,16 @@ import sub4.StockAccount;
 class Increment {
 	
 	private int num1;
-	public static int num2; // public static 정보를 공유 하기때문에 num2++; 적용
-	
+	public static int num2;
+	 // public static 정보를 공유 하기때문에 num2++; 적용
 	public Increment() {
-		
 		num1++;
 		num2++;
 		
 		System.out.println("num1: " + num1);
 		System.out.println("num2: " + num2);
 	}
+
 }
 
 
@@ -37,38 +37,34 @@ public class StaticTest {
 	public static void main(String[] args) {
 		
 		// Car 객체 생성
-		Car k5 = new Car("K5","네이비",100);
+		Car k5 = new Car("k5","네이비",100);
 		Car granzer = new Car("그랜져","검정",150);
 		Car bmw5 = new Car("bmw5","흰색",200);
 		
 		k5.show();
 		granzer.show();
 		bmw5.show();
-		
 		// 전체 차량수
 		System.out.println("전체 차량수 : " + Car.count);
-		
 		// Increment 실습
 		Increment inc1 = new Increment();
 		Increment inc2 = new Increment();
 		Increment inc3 = new Increment();
-		
 		//static을 활용한 싱글톤 예제
-		Calc cal1 = Calc.getIntstance();
-		Calc cal2 = Calc.getIntstance();
-		Calc cal3 = Calc.getIntstance();
-		Calc cal4 = Calc.getIntstance();
+		Calc cal1 = Calc.getInstance();
+		Calc cal2 = Calc.getInstance();
+		Calc cal3 = Calc.getInstance();
+		Calc cal4 = Calc.getInstance();
 		
-		int rs1 = cal1.plus(1, 2);
-		int rs2 = cal2.minus(1, 2);
-		int rs3 = cal3.multi(2, 3);
-		int rs4 = cal4.div(4, 2);
+		int rs1 = cal1.plus(1,2);
+		int rs2 = cal1.minus(1,2);
+		int rs3 = cal1.multi(2,3);
+		int rs4 = cal1.div(4,2);
 		
 		System.out.println("rs1 : " + rs1);
 		System.out.println("rs2 : " + rs2);
 		System.out.println("rs3 : " + rs3);
 		System.out.println("rs4 : " + rs4);
-		
-		
+
 	}
 }

@@ -12,7 +12,7 @@ public class ClassTest {
 		Car sonata = new Car();
 		
 		// 객체 초기화
-		sonata.name  = "소나타";
+		sonata.name = "소나타";
 		sonata.color = "흰색";
 		sonata.speed = 0;
 		
@@ -20,7 +20,6 @@ public class ClassTest {
 		sonata.speedUp(60);
 		sonata.speedDown(20);
 		sonata.show();
-		
 		// 객체 선언, 생성, 초기화, 상호작용
 		
 		Car avante = new Car();
@@ -33,16 +32,15 @@ public class ClassTest {
 		avante.show();
 		
 		// Account 객체선언 //객체 생성/초기화/상호작용
-		
 		Account kb = new Account();
-		kb.bank    = "국민은행";
-		kb.id      = "101-01212-31";
-		kb.name    = "김형민";
+		kb.bank = "국민은행";
+		kb.id = "101-01212-31";
+		kb.name = "김형민";
 		kb.balance = 10000;
 		
 		kb.deposit(40000);
 		kb.withdraw(30000);
 		kb.show();
-				
+
 	}
 }
