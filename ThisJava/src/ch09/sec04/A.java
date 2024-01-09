@@ -1,4 +1,4 @@
-package ch09.sec04;
+ package ch09.sec04;
 
 public class A {
 	
