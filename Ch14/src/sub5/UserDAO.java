@@ -41,10 +41,6 @@ public class UserDAO {
 		// 2단계
 		return DriverManager.getConnection(HOST, USER, PASS);
 
-		// 3단계
-		// 4단계
-		// 5단계
-		// 6단계
 	}
 
 	// 자원해제 메서드
@@ -89,7 +85,7 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public List<UserDTO> selectUsers() {
 		List<UserDTO> users = new ArrayList<>();
 		try {
