@@ -34,6 +34,10 @@ public class UserDAO {
 	private Connection getConnection() throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		return DriverManager.getConnection(HOST, USER, PASS);
+<<<<<<< HEAD
+=======
+
+>>>>>>> b4b974b7b048ec2b0dfbb0431c144920087863ce
 	}
 	
 	// 자원해제 메서드
