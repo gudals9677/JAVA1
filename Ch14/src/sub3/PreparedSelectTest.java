@@ -23,65 +23,67 @@ import java.util.List;
  */
 
 public class PreparedSelectTest {
-	public static void main(String[] args) {
-		
-		// DB정보
-		String host = "jdbc:mysql://127.0.0.1:3306/studydb";
-		String user = "gudals";
-		String pass = "1234";
-		
-		// 결과처리용 리스트
-		List<User4VO> users = new ArrayList<>();
-		
-		try {
-			// 1단계 - JDBC 드라이버 로드
-			Class.forName("com.mysql.cj.jdbc.Driver");
+		public static void main(String[] args) {
+			List<User4VO> users = new ArrayList<>();
+			// DB정보
+			String host = "jdbc:mysql://127.0.0.1:3306/studydb";
+			String user = "chhak";
+			String pass = "abc1234";
 			
-			// 2단계 - 데이터베이스 접속
-			Connection conn = DriverManager.getConnection(host,user,pass);
+			// 결과처리 리스트
 			
-			// 3단계 - SQL실행객체 생성
-			String sql = "Select * from `user4`";
-			PreparedStatement psmt = conn.prepareStatement(sql);
 			
-			// 4단계 - SQL실행
-			ResultSet rs = psmt.executeQuery();
-			
-			// 5단계 - 결과처리
-			while(rs.next()) {
-				//커서가 가르키는 튜플 결과 가져오기
+			try {
+				// 1단계 - JDBC 드라이버 로드
+				Class.forName("com.mysql.cj.jdbc.Driver");
 				
-				// VO객체 생성 및 초기화
-				User4VO u4 = new User4VO();
-				u4.setUid(rs.getString(1));
-				u4.setName(rs.getString(2));
-				u4.setGender(rs.getString(3));
-				u4.setAge(rs.getInt(4));
-				u4.setHp(rs.getString(5));
-				u4.setAddr(rs.getString(6));
+				// 2단계 - 데이터베이스 접속
+				Connection conn = DriverManager.getConnection(host,user,pass);
 				
-				// 리스트 추가
-				users.add(u4);
+				// 3단계 - SQL실행 객체 생성
+				String sql = "Select * from `user3`";
+				PreparedStatement psmt = conn.prepareStatement(sql);	
+				
+				// 4단계 - SQL실행
+				ResultSet rs = psmt.executeQuery();
+				
+				// 5단계 - 결과처리(SELECT 경우)
+				while(rs.next()) {
+					// VO객체 생성 및 초기화
+					User4VO vo = new User4VO();
+					vo.setUid(rs.getString(1));
+					vo.setName(rs.getString(2));
+					vo.setGender(rs.getString(3));
+					vo.setAge(rs.getInt(4));
+					vo.setHp(rs.getString(5));
+					vo.setAddr(rs.getString(6));
+					// 리스트 추가
+					users.add(vo);
+				}
+							
+				
+				// 6단계 - 데이터베이스 종료
+				rs.close();
+				psmt.close();
+				conn.close();
+			}catch (Exception e) {
+				e.printStackTrace();
 			}
-			// 6단계 - 데이터베이스 종료
-			rs.close();
-			psmt.close();
-			conn.close();
-	
 			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		for(User4VO u4 : users) {
-			System.out.printf("%s,%s,%s,%d,%s,%s",u4.getUid(),
-												  u4.getName(),
-												  u4.getGender(),
-												  u4.getAge(),
-												  u4.getHp(),
-												  u4.getAddr());
-		}
+			// 결과출력
+			
+			for(User4VO vo : users) {
+				
+				System.out.printf("%s,%s,%s,%d,%s,%s\n",vo.getUid(),
+						vo.getName(),
+						vo.getGender(),
+						vo.getAge(),
+						vo.getHp(),
+						vo.getAddr());
+			
+			}
+			
+			System.out.println("SELECT 완료...");
 		
-		
-		System.out.println("select 완료...");
+		}
 	}
-}

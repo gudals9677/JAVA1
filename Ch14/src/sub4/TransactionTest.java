@@ -14,11 +14,10 @@ import java.util.Scanner;
 public class TransactionTest {
 	public static void main(String[] args) {
 		
-	Scanner scan = new Scanner(System.in);
-	System.out.print("장애를 발생하시겠습니까?");
-		
-	int answer = scan.nextInt(); // 1:장애발생
-	
+	Scanner scanner = new Scanner(System.in);
+	System.out.print("장애를 발생 시키겠습니까?");
+	// 1:장애발생
+	int answer = scanner.nextInt();
 	// 트랜잭션 선언 - 선언과 생성 분리해야함
 	Connection conn = null;
 	
@@ -49,10 +48,11 @@ public class TransactionTest {
 		// 4단계 - SQL 실행
 		psmt1.executeUpdate();
 		
-		if(answer == 1) {
-			throw new Exception("예상치 못한 예외발생!");
+		if(answer ==1 ) {
+			throw new Exception("예상치 못한 예외 발생!");
 		}
-		psmt2.executeUpdate();
+		psmt2.executeUpdate();	
+			
 		
 		//트랜잭션 확정 - 성공처리
 		conn.commit();
@@ -61,9 +61,9 @@ public class TransactionTest {
 		
 		
 		// 6단계 - 데이터베이스 종료
-		psmt1.close();
-		psmt2.close();
 		conn.close();
+		psmt2.close();
+		psmt1.close();
 		
 		}catch(Exception e) {
 			e.printStackTrace();

@@ -25,14 +25,13 @@ public class PreparedInsertTest {
 			Connection conn = DriverManager.getConnection(host,user,pass);
 			
 			// 3단계 - SQL실행 객체 생성
-			String sql = "INSERT INTO `User1` values (?,?,?,?,?)";
+			String sql = "INSERT INTO `USER1` VALUES(?,?,?,?,?)";
 			PreparedStatement psmt = conn.prepareStatement(sql);
-			psmt.setString(1, "B101");
-			psmt.setString(2, "장보고");
-			psmt.setString(3, "99-01-01");
-			psmt.setString(4, "010-1234-1111");
-			psmt.setInt(5, 29);
-			
+			psmt.setString(1,"c103");
+			psmt.setString(2,"문정완");
+			psmt.setString(3,"95-11-16");
+			psmt.setString(4,"010-1234-1111");
+			psmt.setInt(5,26);
 			// 4단계 - SQL실행
 			psmt.executeUpdate();
 			

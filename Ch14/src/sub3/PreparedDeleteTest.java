@@ -22,7 +22,7 @@ public class PreparedDeleteTest {
 			// 3단계 - SQL실행객체 생성
 			String sql = "Delete from `user2` where `uid`=?";
 			PreparedStatement psmt = conn.prepareStatement(sql);
-			psmt.setString(1,"A102");
+			psmt.setString(1,"A101");
 			PreparedStatement psmt2 = conn.prepareStatement(sql);
 			psmt2.setString(1, "A103");
 			

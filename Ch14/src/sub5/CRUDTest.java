@@ -10,87 +10,92 @@ import java.util.Scanner;
  */
 public class CRUDTest {
 	public static void main(String[] args) {
-
+		
 		System.out.println("회원관리매니저 v1.0");
 		Scanner sc = new Scanner(System.in);
-		UserDAO dao = UserDAO.getInstance();
-
-		while (true) {
-
+		
+		while(true) {
+			
 			System.out.println("종료:0, 입력:1, 조회:2, 검색:3, 수정:4, 삭제:5");
-			System.out.println("선택> ");
-
+			System.out.print("선택> ");
+			
 			int answer = sc.nextInt();
-
-			if (answer == 0) {
+			UserDAO dao = UserDAO.getInstance();
+			
+			if(answer == 0) {
 				break;
-			} else if (answer == 1) {
+			}else if(answer == 1) {
 				// 입력
 				UserDTO dto = new UserDTO();
-
+				
 				System.out.print("아이디 입력 : ");
 				dto.setUid(sc.next());
-
+				
 				System.out.print("이름 입력 : ");
 				dto.setName(sc.next());
-
+				
 				System.out.print("생년월일 입력 : ");
 				dto.setBirth(sc.next());
-
+				
 				System.out.print("주소 입력 : ");
 				dto.setAddr(sc.next());
-
+							
 				dao.insertUser(dto);
-
-				System.out.println("등록완료.");
-			} else if (answer == 2) {
+				
+				System.out.println("등록완료...");
+				
+				
+			}else if(answer == 2) {
 				// 조회
 				List<UserDTO> users = dao.selectUsers();
-
-				for (UserDTO user : users) {
-					System.out.println(users);
-				}
-			} else if (answer == 3) {
-				// 검색
-				System.out.print("아이디 검색");
-				String uid = sc.next();
-
-				UserDTO user = dao.selectUser(uid);
-
-				if (user == null) {
-					System.out.println("해당하는 아이디를 가진 사용자가 없습니다.");
-				} else {
+				
+				for(UserDTO user : users) {
 					System.out.println(user);
 				}
-			} else if (answer == 4) {
+				
+			}else if(answer == 3) {
+				// 검색
+				System.out.print("아이디 검색 : ");
+				String uid = sc.next();
+				
+				UserDTO user = dao.selectUser(uid);
+				
+				if(user == null) {
+					System.out.println("해당하는 아이디를 가진 사용자가 없습니다.");
+				}else {
+					System.out.println(user);
+				}
+				
+			}else if(answer == 4) {
 				// 수정
 				UserDTO user = new UserDTO();
-
-				System.out.println("수정 회원 아이디 입력 : ");
+						
+				System.out.print("수정 회원 아이디 입력 : ");
 				user.setUid(sc.next());
-				System.out.println("수정 회원 이름 입력 : ");
+				
+				System.out.print("수정 회원 이름 입력 : ");
 				user.setName(sc.next());
-				System.out.println("수정 회원 생년월일 입력 : ");
+				
+				System.out.print("수정 회원 생년월일 입력 : ");
 				user.setBirth(sc.next());
-				System.out.println("수정 회원 주소 입력 : ");
+				
+				System.out.print("수정 회원 주소 입력 : ");
 				user.setAddr(sc.next());
-
+				
 				dao.updateUser(user);
-
-				System.out.println("수정 완료...");
-			} else if (answer == 5) {
+				
+				System.out.println("수정완료...");
+				
+			}else if(answer == 5) {
 				// 삭제
-			
-				System.out.println("삭제 회원 이름 입력 : ");
+				System.out.print("삭제할 회원 아이디 입력 : ");
 				String uid = sc.next();
 				
 				dao.deleteUser(uid);
-				
-				System.out.println("삭제 완료...");
-
+				System.out.println("삭제완료...");
 			}
 		}
-
+		
 		sc.close();
 		System.out.println("회원관리매니저 종료...");
 	}

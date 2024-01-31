@@ -20,12 +20,11 @@ public class PreparedUpdateTest {
 			Connection conn = DriverManager.getConnection(host,user,pass);
 			
 			// 3단계 - SQL실행 객체 생성
-			String sql = "Update `user1` set `hp`=?,`age`=? where `uid`=?"; 
+			String sql = "Update `user1` set `hp`=?, `age`=? where `uid`=?";
 			PreparedStatement psmt = conn.prepareStatement(sql);
-			psmt.setString(1,"010-1234-1005");
-			psmt.setInt(2,35);
-			psmt.setString(3,"J101");
-			
+			psmt.setString(1, "010-3380-9714");
+			psmt.setInt(2, 30);
+			psmt.setString(3, "B101");
 			// 4단계 - SQL실행
 			psmt.executeUpdate();
 			
@@ -33,8 +32,8 @@ public class PreparedUpdateTest {
 			
 			
 			// 6단계 - 데이터베이스 종료
-				psmt.close();
-				conn.close();
+			psmt.close();
+			conn.close();
 		
 		}catch(Exception e) {
 			e.printStackTrace();
